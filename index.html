@@ -20,13 +20,20 @@
   </head>
 
   <body>
-    <header>
-      <!-- place navbar here -->
-    </header>
-    <main></main>
-    <footer>
-      <!-- place footer here -->
-    </footer>
+    <main>
+      <div class="container">
+        <form onsubmit="passwordRetriever(event)">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="inserisci una password..."
+          />
+          <button type="submit">invia</button>
+        </form>
+      </div>
+    </main>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="./main.js"></script>
   </body>
