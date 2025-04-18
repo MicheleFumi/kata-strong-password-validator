@@ -22,14 +22,21 @@
   <body>
     <main>
       <div class="container">
-        <form onsubmit="passwordRetriever(event)">
+        <form oninput="passwordRetriever()">
           <input
             type="password"
             name="password"
             id="password"
             placeholder="inserisci una password..."
           />
-          <button type="submit">invia</button>
+          <br />
+          <small>Almeno 9 caratteri</small>
+          <br />
+          <small>Almeno una maiuscola</small>
+          <br />
+          <small>Almeno un numero</small>
+          <br />
+          <small>Almeno un carattere speciale</small>
         </form>
       </div>
     </main>
