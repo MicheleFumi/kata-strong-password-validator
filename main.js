@@ -6,88 +6,73 @@ function passwordRetriever() {
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(inputPassword);
 
   const validationBlocks = document.querySelectorAll(".validation-block");
+  const strengthBar = document.querySelector(".progress-bar");
 
-  // Requisito 1: almeno 9 caratteri
+  let strength = 0;
+
+  // Controlli e aggiornamenti
   if (inputPassword.length >= 9) {
-    validationBlocks[0].querySelector(".passed").classList.remove("d-none");
-    validationBlocks[0].querySelector(".not-passed").classList.add("d-none");
-    validationBlocks[0]
-      .querySelector(".validation-text")
-      .classList.remove("text-danger");
-    validationBlocks[0]
-      .querySelector(".validation-text")
-      .classList.add("text-success");
+    strength++;
+    updateValidationBlock(validationBlocks[0], true);
   } else {
-    validationBlocks[0].querySelector(".passed").classList.add("d-none");
-    validationBlocks[0].querySelector(".not-passed").classList.remove("d-none");
-    validationBlocks[0]
-      .querySelector(".validation-text")
-      .classList.add("text-danger");
-    validationBlocks[0]
-      .querySelector(".validation-text")
-      .classList.remove("text-success");
+    updateValidationBlock(validationBlocks[0], false);
   }
 
-  // Requisito 2: almeno una maiuscola
   if (hasUppercase) {
-    validationBlocks[1].querySelector(".passed").classList.remove("d-none");
-    validationBlocks[1].querySelector(".not-passed").classList.add("d-none");
-    validationBlocks[1]
-      .querySelector(".validation-text")
-      .classList.remove("text-danger");
-    validationBlocks[1]
-      .querySelector(".validation-text")
-      .classList.add("text-success");
+    strength++;
+    updateValidationBlock(validationBlocks[1], true);
   } else {
-    validationBlocks[1].querySelector(".passed").classList.add("d-none");
-    validationBlocks[1].querySelector(".not-passed").classList.remove("d-none");
-    validationBlocks[1]
-      .querySelector(".validation-text")
-      .classList.add("text-danger");
-    validationBlocks[1]
-      .querySelector(".validation-text")
-      .classList.remove("text-success");
+    updateValidationBlock(validationBlocks[1], false);
   }
 
-  // Requisito 3: almeno un numero
   if (hasNumber) {
-    validationBlocks[2].querySelector(".passed").classList.remove("d-none");
-    validationBlocks[2].querySelector(".not-passed").classList.add("d-none");
-    validationBlocks[2]
-      .querySelector(".validation-text")
-      .classList.remove("text-danger");
-    validationBlocks[2]
-      .querySelector(".validation-text")
-      .classList.add("text-success");
+    strength++;
+    updateValidationBlock(validationBlocks[2], true);
   } else {
-    validationBlocks[2].querySelector(".passed").classList.add("d-none");
-    validationBlocks[2].querySelector(".not-passed").classList.remove("d-none");
-    validationBlocks[2]
-      .querySelector(".validation-text")
-      .classList.add("text-danger");
-    validationBlocks[2]
-      .querySelector(".validation-text")
-      .classList.remove("text-success");
+    updateValidationBlock(validationBlocks[2], false);
   }
 
-  // Requisito 4: almeno un carattere speciale
   if (hasSpecialChar) {
-    validationBlocks[3].querySelector(".passed").classList.remove("d-none");
-    validationBlocks[3].querySelector(".not-passed").classList.add("d-none");
-    validationBlocks[3]
-      .querySelector(".validation-text")
-      .classList.remove("text-danger");
-    validationBlocks[3]
-      .querySelector(".validation-text")
-      .classList.add("text-success");
+    strength++;
+    updateValidationBlock(validationBlocks[3], true);
   } else {
-    validationBlocks[3].querySelector(".passed").classList.add("d-none");
-    validationBlocks[3].querySelector(".not-passed").classList.remove("d-none");
-    validationBlocks[3]
-      .querySelector(".validation-text")
-      .classList.add("text-danger");
-    validationBlocks[3]
-      .querySelector(".validation-text")
-      .classList.remove("text-success");
+    updateValidationBlock(validationBlocks[3], false);
+  }
+
+  // Gestione barra della forza
+  if (strength === 0) {
+    strengthBar.style.width = "0%";
+    strengthBar.className = "progress-bar";
+  } else if (strength === 1) {
+    strengthBar.style.width = "25%";
+    strengthBar.className = "progress-bar bg-danger";
+  } else if (strength === 2) {
+    strengthBar.style.width = "50%";
+    strengthBar.className = "progress-bar bg-warning";
+  } else if (strength === 3) {
+    strengthBar.style.width = "75%";
+    strengthBar.className = "progress-bar bg-warning";
+  } else if (strength === 4) {
+    strengthBar.style.width = "100%";
+    strengthBar.className = "progress-bar bg-success";
+  }
+}
+
+// Funzione di supporto per non ripetere codice
+function updateValidationBlock(block, isValid) {
+  const passedIcon = block.querySelector(".passed");
+  const notPassedIcon = block.querySelector(".not-passed");
+  const text = block.querySelector(".validation-text");
+
+  if (isValid) {
+    passedIcon.classList.remove("d-none");
+    notPassedIcon.classList.add("d-none");
+    text.classList.add("text-success");
+    text.classList.remove("text-danger");
+  } else {
+    passedIcon.classList.add("d-none");
+    notPassedIcon.classList.remove("d-none");
+    text.classList.add("text-danger");
+    text.classList.remove("text-success");
   }
 }

@@ -28,54 +28,54 @@
 
   <body>
     <main>
-      <div class="container">
-        <form oninput="passwordRetriever()">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="inserisci una password..."
-          />
-          <br />
-          <div class="validation-block">
-            <i class="fa-solid fa-check d-none passed" style="color: green"></i>
-            <i
-              class="fa-solid fa-xmark d-none not-passed"
-              style="color: red"
-            ></i>
-            <small class="validation-text">Almeno 9 caratteri</small>
-          </div>
+      <div class="container py-5">
+        <div class="card shadow-sm rounded-4 p-4">
+          <form oninput="passwordRetriever()">
+            <div class="mb-3">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Inserisci una password..."
+                class="form-control form-control-lg"
+              />
+            </div>
 
-          <br />
-          <div class="validation-block">
-            <i class="fa-solid fa-check d-none passed" style="color: green"></i>
-            <i
-              class="fa-solid fa-xmark d-none not-passed"
-              style="color: red"
-            ></i>
-            <small class="validation-text">Almeno una maiuscola</small>
-          </div>
+            <div class="list-group mb-4">
+              <div class="list-group-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-check d-none passed text-success"></i>
+                <i class="fa-solid fa-xmark d-none not-passed text-danger"></i>
+                <small class="validation-text">Almeno 9 caratteri</small>
+              </div>
+              <div class="list-group-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-check d-none passed text-success"></i>
+                <i class="fa-solid fa-xmark d-none not-passed text-danger"></i>
+                <small class="validation-text">Almeno una maiuscola</small>
+              </div>
+              <div class="list-group-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-check d-none passed text-success"></i>
+                <i class="fa-solid fa-xmark d-none not-passed text-danger"></i>
+                <small class="validation-text">Almeno un numero</small>
+              </div>
+              <div class="list-group-item d-flex align-items-center gap-2">
+                <i class="fa-solid fa-check d-none passed text-success"></i>
+                <i class="fa-solid fa-xmark d-none not-passed text-danger"></i>
+                <small class="validation-text"
+                  >Almeno un carattere speciale</small
+                >
+              </div>
+            </div>
 
-          <br />
-          <div class="validation-block">
-            <i class="fa-solid fa-check d-none passed" style="color: green"></i>
-            <i
-              class="fa-solid fa-xmark d-none not-passed"
-              style="color: red"
-            ></i>
-            <small class="validation-text">Almeno un numero</small>
-          </div>
-
-          <br />
-          <div class="validation-block">
-            <i class="fa-solid fa-check d-none passed" style="color: green"></i>
-            <i
-              class="fa-solid fa-xmark d-none not-passed"
-              style="color: red"
-            ></i>
-            <small class="validation-text">Almeno un carattere speciale</small>
-          </div>
-        </form>
+            <div class="progress" style="height: 10px">
+              <div
+                id="passwordStrengthBar"
+                class="progress-bar"
+                role="progressbar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </form>
+        </div>
       </div>
     </main>
 
