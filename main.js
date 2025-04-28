@@ -6,6 +6,8 @@ function passwordRetriever() {
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(inputPassword);
 
   const validationBlocks = document.querySelectorAll(".validation-block");
+  console.log(validationBlocks, "ciao");
+
   const strengthBar = document.querySelector(".progress-bar");
 
   let strength = 0;
